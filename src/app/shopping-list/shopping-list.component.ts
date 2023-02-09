@@ -10,4 +10,9 @@ ingredients: Ingredient[]=[
   new Ingredient('Apple',5),
   new Ingredient('Tomato',4)
 ];
+
+selectedIng(Ingredient:Ingredient){
+  console.log(Ingredient)
+this.ingredients.push(Ingredient);
+}
 }

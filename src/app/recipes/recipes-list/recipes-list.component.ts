@@ -1,4 +1,4 @@
-import { Component, Inject, Injectable } from '@angular/core';
+import { Component, Inject, Injectable,EventEmitter,Output } from '@angular/core';
 import { TestComponentRenderer } from '@angular/core/testing';
 import {Recipe} from '../recipes.model';
 @Component({
@@ -8,8 +8,13 @@ import {Recipe} from '../recipes.model';
 })
 
 export class RecipesListComponent {
-recipes:Recipe[]=[
+  @Output() recipeWasSelected=new EventEmitter<Recipe>
+  recipes:Recipe[]=[
   new Recipe('Pan Cake', 'A sweet dish made of wheat flour','https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
   new Recipe('Salad', 'A healthy dish made of vegetables ','https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
 ];
+
+selectedrecipe(recipe:Recipe){
+this.recipeWasSelected.emit(recipe)
+}
 }
