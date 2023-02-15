@@ -11,8 +11,8 @@ ingredients: Ingredient[]=[
   new Ingredient('Tomato',4)
 ];
 
-selectedIng(Ingredient:Ingredient){
+selectedIng(Ingredient:number){
   console.log(Ingredient)
-this.ingredients.push(Ingredient);
+// this.ingredients.push(Ingredient);
 }
 }
