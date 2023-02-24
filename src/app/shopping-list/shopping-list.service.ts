@@ -9,6 +9,8 @@ export class ShoppingListService{
     new Ingredient('Tomatoes', 10),
   ];
 
+  startedEditing=new Subject<number>();
+
   getIngredients() {
     return this.ingredients.slice();
   }

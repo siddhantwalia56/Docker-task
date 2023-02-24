@@ -21,6 +21,9 @@ ngOnInit() {
       }
     );
 }
+onEditItem(index:number){
+  this.slService.startedEditing.next(index)
+}
 ngOnDestroy(){
   this.ingredientchange.unsubscribe();
 }
