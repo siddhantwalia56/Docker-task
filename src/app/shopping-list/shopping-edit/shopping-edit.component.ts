@@ -11,9 +11,11 @@ import { ShoppingListService } from '../shopping-list.service';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy{
+  @ViewChild('f', {static:false}) slform:NgForm
   subscription:Subscription
   editMode=false;
   editedItemindex:number;
+  editeditem:Ingredient
   constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
@@ -21,6 +23,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy{
       (index:number)=>{
         this.editedItemindex=index;
         this.editMode=true;
+        this.editeditem=this.slService.getingredient(index);
+        this.slform.setValue({
+          name: this.editeditem.name,
+          amount: this.editeditem.amount})
       }
     )
   }
@@ -30,6 +36,9 @@ ngOnDestroy(){
   OnAdd(form:NgForm) {
     const value=form.value;
     const newIngredient = new Ingredient(value.name, value.amount);
+    if(this.editMode)
+    {this.slService.upadteIngredient(this.editedItemindex,newIngredient)}
+    else
     this.slService.addIngredient(newIngredient);
   }
 }
