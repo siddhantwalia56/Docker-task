@@ -2,10 +2,10 @@ import { EventEmitter,Injectable } from '@angular/core';
 import {Recipe} from './recipes.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
-export class RecipeService{
-  recipeSelected= new EventEmitter<Recipe>();
+export class RecipeService{q
   private recipes:Recipe[]=[
     new Recipe('Pan Cake', 'A sweet dish made of wheat flour',
     'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
